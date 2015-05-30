@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Homepage.
+  <h1>Movie DataBase</h1>
+  {% if app.user is defined %}
+    <div>{{ app.user.username }}</div>
+  {% else %}
+    <div>
+      <a href="{{ path('fos_user_registration_register') }}">S'enregistrer</a>
+    </div>
+  {% endif %}
 {% endblock %}
