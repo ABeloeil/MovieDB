@@ -2,7 +2,7 @@
 
 {% block body %}
   <h1>Movie DataBase</h1>
-  {% if app.user is defined %}
+  {% if app.user.username is defined %}
     <div>{{ app.user.username }}</div>
   {% else %}
     <div>
