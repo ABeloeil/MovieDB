@@ -3,6 +3,7 @@
 namespace MovieBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Movie
@@ -31,7 +32,8 @@ class Movie
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
 
