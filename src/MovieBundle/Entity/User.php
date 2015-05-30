@@ -22,6 +22,13 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @var Movie
+     *
+     * @ORM\ManyToMany(targetEntity="Movie", cascade={"persist"})
+     */
+    protected $movies;
+
 
     /**
      * Get id
