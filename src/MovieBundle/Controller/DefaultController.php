@@ -15,6 +15,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="movie_bundle_default_index")
+     * @Method({"GET"})
      */
     public function indexAction()
     {
