@@ -19,7 +19,8 @@ class AppKernel extends Kernel
             new MovieBundle\MovieBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new Liip\ImagineBundle\LiipImagineBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
