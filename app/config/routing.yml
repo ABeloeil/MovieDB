@@ -1,12 +1,10 @@
 movies:
     resource: "@MovieBundle/Controller/MovieController.php"
     type:     rest
-    prefix:   /movies
 
 users:
     resource: "@MovieBundle/Controller/UserController.php"
     type:     rest
-    prefix:   /users
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

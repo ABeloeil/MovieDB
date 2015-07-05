@@ -9,7 +9,6 @@ use FOS\RestBundle\Controller\Annotations\NamePrefix;
 
 /**
  * Class UserController
- * @NamePrefix("users_")
  */
 class UserController extends FOSRestController
 {
@@ -18,13 +17,13 @@ class UserController extends FOSRestController
         return $this->getDoctrine()->getManager()->getRepository('MovieBundle:User');
     }
 
-    public function allAction()
+    public function getUsersAction()
     {
         $users = $this->getRepository()->findAll();
         return $this->handleView($this->view($users));
     }
 
-    public function getAction(User $user)
+    public function getUserAction(User $user)
     {
         return $this->handleView($this->view($user));
     }

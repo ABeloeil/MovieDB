@@ -4,3 +4,4 @@
 /app/config/parameters.yml
 /bin
 /web/bundles
+/node_modules

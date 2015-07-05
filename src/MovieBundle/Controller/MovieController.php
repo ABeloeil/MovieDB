@@ -10,7 +10,6 @@ use FOS\RestBundle\Controller\Annotations\NamePrefix;
 /**
  * Class MovieController
  * @package MovieBundle\Controller
- * @NamePrefix("movies_")
  */
 class MovieController extends FOSRestController {
 
@@ -18,29 +17,29 @@ class MovieController extends FOSRestController {
         return $this->getDoctrine()->getManager()->getRepository('MovieBundle:Movie');
     }
 
-    public function allAction()
+    public function getMoviesAction()
     {
         $movies = $this->getRepository()->findAll();
         return $this->handleView($this->view($movies),200);
     }
 
-    public function getAction(Movie $movie)
+    public function getMovieAction(Movie $movie)
     {
         return $this->handleView($this->view($movie));
     }
 
-    public function postAction(Request $request)
+    public function postMovieAction(Request $request)
     {
         $movie = new Movie();
         return $this->handleView($this->view($movie));
     }
 
-    public function updateAction(Request $request, Movie $movie)
+    public function updateMovieAction(Request $request, Movie $movie)
     {
         return $this->handleView($this->view($movie));
     }
 
-    public function deleteAction(Movie $movie)
+    public function deleteMovieAction(Movie $movie)
     {
         return $this->handleView($this->view($movie));
     }
