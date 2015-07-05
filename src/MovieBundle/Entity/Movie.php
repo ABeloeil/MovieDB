@@ -10,6 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class Movie
 {
@@ -32,8 +33,8 @@ class Movie
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=255, unique=true)
      */
     private $slug;
 
