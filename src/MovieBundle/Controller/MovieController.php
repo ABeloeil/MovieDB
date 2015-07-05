@@ -2,55 +2,46 @@
 
 namespace MovieBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use FOS\RestBundle\Controller\FOSRestController;
+use MovieBundle\Entity\Movie;
 use Symfony\Component\HttpFoundation\Request;
+use FOS\RestBundle\Controller\Annotations\NamePrefix;
 
 /**
  * Class MovieController
  * @package MovieBundle\Controller
- * @Route("/movie", name="movie_bundle_movie")
+ * @NamePrefix("movies_")
  */
-class MovieController extends Controller {
+class MovieController extends FOSRestController {
 
-    /**
-     * @Route("/", name="movie_bundle_movie_index")
-     * @Method({"GET"})
-     */
-    public function indexAction()
-    {
-        return $this->render(':movie:index.html.twig');
+    private function getRepository(){
+        return $this->getDoctrine()->getManager()->getRepository('MovieBundle:Movie');
     }
 
-    /**
-     * @Route("/add", name="movie_bundle_movie_add")
-     * @Method({"GET", "POST"})
-     */
-    public function addAction(Request $request)
+    public function allAction()
     {
-        return $this->render(':movie:add.html.twig');
+        $movies = $this->getRepository()->findAll();
+        return $this->handleView($this->view($movies),200);
     }
 
-    /**
-     * @Route("/{id}/edit", name="movie_bundle_movie_edit", requirements={"id"="\d+"})
-     * @Method({"GET","POST"})
-     */
-    public function editAction(Request $request, Movie $movie)
+    public function getAction(Movie $movie)
     {
-        return $this->render(':movie:edit.html.twig',[
-            'movie' => $movie,
-        ]);
+        return $this->handleView($this->view($movie));
     }
 
-    /**
-     * @Route("/{id}/delete", name="movie_bundle_movie_delete", requirements={"id"="\d+"})
-     * @Method({"GET","POST"})
-     */
-    public function deleteAction(Request $request, Movie $movie)
+    public function postAction(Request $request)
     {
-        return $this->render(':movie:delete.html.twig',[
-            'movie' => $movie,
-        ]);
+        $movie = new Movie();
+        return $this->handleView($this->view($movie));
+    }
+
+    public function updateAction(Request $request, Movie $movie)
+    {
+        return $this->handleView($this->view($movie));
+    }
+
+    public function deleteAction(Movie $movie)
+    {
+        return $this->handleView($this->view($movie));
     }
 }
